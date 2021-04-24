@@ -1,11 +1,15 @@
 package com.covidhelp.CovidHelp.service;
 
 import com.covidhelp.CovidHelp.api.MedicalLeadCreateRequest;
+import com.covidhelp.CovidHelp.constants.MedicalLeadType;
+import com.covidhelp.CovidHelp.data.City;
 import com.covidhelp.CovidHelp.data.MedicalLead;
+import com.covidhelp.CovidHelp.repository.CityRepository;
 import com.covidhelp.CovidHelp.repository.MedicalLeadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +18,9 @@ public class MedicalLeadService {
 
     @Autowired
     private MedicalLeadRepository medicalLeadRepository;
+
+    @Autowired
+    private CityRepository cityRepository;
 
     public MedicalLead getMedicalLead(String medicalLeadId) {
         Optional<MedicalLead> medicalLeadOptional = medicalLeadRepository.findById(medicalLeadId);
@@ -24,8 +31,14 @@ public class MedicalLeadService {
         }
     }
 
-    public List<MedicalLead> getMedicalLeads() {
-        return medicalLeadRepository.findAll();
+    public List<MedicalLead> getMedicalLeads(String cityId, Integer radius, MedicalLeadType leadType) {
+        Optional<City> cityOptional = cityRepository.findById(cityId);
+        if(cityOptional.isEmpty()) {
+            throw new RuntimeException("invalid city id");
+        }
+
+        List<String> cityIds = Arrays.asList(cityId); // TODO find cityIds by radius
+        return medicalLeadRepository.findAllByMedicalLeadTypeAndCityIdIn(leadType, cityIds);
     }
 
     public MedicalLead createMedicalLead(String userId, MedicalLeadCreateRequest medicalLeadCreateRequest) {
@@ -35,6 +48,7 @@ public class MedicalLeadService {
                 .telegramLink(medicalLeadCreateRequest.getTelegramLink())
                 .medicalLeadType(medicalLeadCreateRequest.getMedicalLeadType())
                 .userId(userId)
+                .cityId(medicalLeadCreateRequest.getCityId())
                 .build();
 
         return medicalLeadRepository.save(medicalLead);
@@ -51,6 +65,7 @@ public class MedicalLeadService {
         medicalLead.setMobiles(medicalLeadCreateRequest.getMobiles());
         medicalLead.setTelegramLink(medicalLeadCreateRequest.getTelegramLink());
         medicalLead.setMedicalLeadType(medicalLeadCreateRequest.getMedicalLeadType());
+        medicalLead.setCityId(medicalLeadCreateRequest.getCityId());
 
         return medicalLeadRepository.save(medicalLead);
     }

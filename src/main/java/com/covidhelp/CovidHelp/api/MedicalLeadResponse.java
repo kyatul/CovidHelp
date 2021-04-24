@@ -1,5 +1,6 @@
 package com.covidhelp.CovidHelp.api;
 
+import com.covidhelp.CovidHelp.constants.MedicalLeadType;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,4 +13,6 @@ public class MedicalLeadResponse {
     private String mobile;
 
     private String telegramLink;
+
+    private MedicalLeadType medicalLeadType;
 }

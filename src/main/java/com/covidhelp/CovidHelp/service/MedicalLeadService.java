@@ -23,6 +23,7 @@ public class MedicalLeadService {
                 .name(medicalLeadCreateRequest.getName())
                 .mobile(medicalLeadCreateRequest.getMobile())
                 .telegramLink(medicalLeadCreateRequest.getTelegramLink())
+                .medicalLeadType(medicalLeadCreateRequest.getMedicalLeadType())
                 .build();
 
         return medicalLeadRepository.save(medicalLead);

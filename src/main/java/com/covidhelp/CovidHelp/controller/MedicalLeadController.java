@@ -28,6 +28,7 @@ public class MedicalLeadController {
                         .mobile(medicalLead.getMobile())
                         .name(medicalLead.getName())
                         .telegramLink(medicalLead.getTelegramLink())
+                        .medicalLeadType(medicalLead.getMedicalLeadType())
                         .build())
                 .collect(Collectors.toList());
     }

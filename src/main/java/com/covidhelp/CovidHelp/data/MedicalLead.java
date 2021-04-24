@@ -1,5 +1,6 @@
 package com.covidhelp.CovidHelp.data;
 
+import com.covidhelp.CovidHelp.constants.MedicalLeadType;
 import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -18,5 +19,7 @@ public class MedicalLead {
     private String mobile;
 
     private String telegramLink;
+
+    private MedicalLeadType medicalLeadType;
 
 }

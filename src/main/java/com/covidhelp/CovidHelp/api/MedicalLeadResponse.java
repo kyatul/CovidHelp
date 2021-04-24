@@ -17,4 +17,8 @@ public class MedicalLeadResponse {
     private String telegramLink;
 
     private MedicalLeadType medicalLeadType;
+
+    private Long verifiedCount;
+
+    private Long rejectCount;
 }

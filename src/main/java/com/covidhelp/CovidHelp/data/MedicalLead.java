@@ -22,4 +22,10 @@ public class MedicalLead {
 
     private MedicalLeadType medicalLeadType;
 
+    @Builder.Default
+    private Long verifiedCount = 0L;
+
+    @Builder.Default
+    private Long rejectCount = 0L;
+
 }

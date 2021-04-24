@@ -30,6 +30,8 @@ public class MedicalLeadController {
                         .name(medicalLead.getName())
                         .telegramLink(medicalLead.getTelegramLink())
                         .medicalLeadType(medicalLead.getMedicalLeadType())
+                        .verifiedCount(medicalLead.getVerifiedCount())
+                        .rejectCount(medicalLead.getRejectCount())
                         .build())
                 .collect(Collectors.toList());
     }

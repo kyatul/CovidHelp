@@ -30,4 +30,6 @@ public class MedicalLead {
     @Builder.Default
     private Long rejectCount = 0L;
 
+    private String userId;
+
 }

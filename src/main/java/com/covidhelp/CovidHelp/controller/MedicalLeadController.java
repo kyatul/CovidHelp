@@ -52,8 +52,15 @@ public class MedicalLeadController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public void createMedicalLead(@RequestBody MedicalLeadCreateRequest medicalLeadCreateRequest)
-    {
-        medicalLeadService.createMedicalLead(medicalLeadCreateRequest);
+    public void createMedicalLead(@RequestBody MedicalLeadCreateRequest medicalLeadCreateRequest) {
+        String userId = "123"; //TODO SuperCoder
+        medicalLeadService.createMedicalLead(userId, medicalLeadCreateRequest);
+    }
+
+    @RequestMapping(value = "/{medicalLeadId}", method = RequestMethod.POST)
+    public void editMedicalLead(@PathVariable(value = "medicalLeadId") String medicalLeadId,
+                                @RequestBody MedicalLeadCreateRequest medicalLeadCreateRequest) {
+        String userId = "123"; //TODO SuperCoder
+        medicalLeadService.editMedicalLead(userId, medicalLeadId, medicalLeadCreateRequest);
     }
 }

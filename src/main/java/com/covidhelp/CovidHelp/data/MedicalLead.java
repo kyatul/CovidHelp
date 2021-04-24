@@ -6,6 +6,8 @@ import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document
 @Data
 @Builder
@@ -16,7 +18,7 @@ public class MedicalLead {
 
     private String name;
 
-    private String mobile;
+    private List<String> mobiles;
 
     private String telegramLink;
 

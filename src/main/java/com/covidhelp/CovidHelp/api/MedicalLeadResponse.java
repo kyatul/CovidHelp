@@ -4,6 +4,8 @@ import com.covidhelp.CovidHelp.constants.MedicalLeadType;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Builder
 public class MedicalLeadResponse {
@@ -12,7 +14,7 @@ public class MedicalLeadResponse {
 
     private String name;
 
-    private String mobile;
+    private List<String> mobiles;
 
     private String telegramLink;
 

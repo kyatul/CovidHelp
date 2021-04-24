@@ -26,7 +26,7 @@ public class MedicalLeadController {
         return medicalLeads.stream()
                 .map(medicalLead -> MedicalLeadResponse.builder()
                         .id(medicalLead.getId())
-                        .mobile(medicalLead.getMobile())
+                        .mobiles(medicalLead.getMobiles())
                         .name(medicalLead.getName())
                         .telegramLink(medicalLead.getTelegramLink())
                         .medicalLeadType(medicalLead.getMedicalLeadType())

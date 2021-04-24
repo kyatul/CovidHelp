@@ -21,7 +21,7 @@ public class MedicalLeadService {
     public MedicalLead createMedicalLead(MedicalLeadCreateRequest medicalLeadCreateRequest) {
         final MedicalLead medicalLead = MedicalLead.builder()
                 .name(medicalLeadCreateRequest.getName())
-                .mobile(medicalLeadCreateRequest.getMobile())
+                .mobiles(medicalLeadCreateRequest.getMobiles())
                 .telegramLink(medicalLeadCreateRequest.getTelegramLink())
                 .medicalLeadType(medicalLeadCreateRequest.getMedicalLeadType())
                 .build();

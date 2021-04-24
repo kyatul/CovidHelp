@@ -1,11 +1,10 @@
 package com.covidhelp.CovidHelp.api;
 
-import lombok.Builder;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 @Data
-@Builder
-public class MedicalLeadResponse {
+public class MedicalLeadCreateRequest {
 
     private String name;
 

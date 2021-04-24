@@ -2,6 +2,7 @@ package com.covidhelp.CovidHelp.controller;
 
 import com.covidhelp.CovidHelp.api.MedicalLeadCreateRequest;
 import com.covidhelp.CovidHelp.api.MedicalLeadResponse;
+import com.covidhelp.CovidHelp.constants.MedicalLeadType;
 import com.covidhelp.CovidHelp.data.MedicalLead;
 import com.covidhelp.CovidHelp.service.MedicalLeadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -36,8 +38,10 @@ public class MedicalLeadController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public List<MedicalLeadResponse> getMedicalLeads() {
-        final List<MedicalLead> medicalLeads = medicalLeadService.getMedicalLeads();
+    public List<MedicalLeadResponse> getMedicalLeads(@RequestParam(name = "cityId", required = true) String cityId,
+                                                     @RequestParam(name = "radius", required = true) Integer radius,
+                                                     @RequestParam(name = "leadType", required = true) MedicalLeadType leadType) {
+        final List<MedicalLead> medicalLeads = medicalLeadService.getMedicalLeads(cityId, radius, leadType);
         return medicalLeads.stream()
                 .map(medicalLead -> MedicalLeadResponse.builder()
                         .id(medicalLead.getId())

@@ -32,4 +32,6 @@ public class MedicalLead {
 
     private String userId;
 
+    private String cityId;
+
 }

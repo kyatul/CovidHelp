@@ -18,4 +18,7 @@ public class MedicalLeadCreateRequest {
 
     @NonNull
     private MedicalLeadType medicalLeadType;
+
+    @NonNull
+    private String cityId;
 }

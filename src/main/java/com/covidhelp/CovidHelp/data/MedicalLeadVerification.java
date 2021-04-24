@@ -19,4 +19,12 @@ public class MedicalLeadVerification {
     private String userId;
 
     private String medicalLeadId;
+
+    public boolean isVerified() {
+        return MedicalLeadVerificationType.VERIFY.equals(verificationType);
+    }
+
+    public boolean isRejected() {
+        return MedicalLeadVerificationType.REJECT.equals(verificationType);
+    }
 }

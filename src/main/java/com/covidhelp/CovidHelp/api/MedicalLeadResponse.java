@@ -8,6 +8,8 @@ import lombok.Data;
 @Builder
 public class MedicalLeadResponse {
 
+    private String id;
+
     private String name;
 
     private String mobile;

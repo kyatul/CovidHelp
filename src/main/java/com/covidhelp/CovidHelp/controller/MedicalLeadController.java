@@ -25,6 +25,7 @@ public class MedicalLeadController {
         final List<MedicalLead> medicalLeads = medicalLeadService.getMedicalLeads();
         return medicalLeads.stream()
                 .map(medicalLead -> MedicalLeadResponse.builder()
+                        .id(medicalLead.getId())
                         .mobile(medicalLead.getMobile())
                         .name(medicalLead.getName())
                         .telegramLink(medicalLead.getTelegramLink())

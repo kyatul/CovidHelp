@@ -37,7 +37,7 @@ public class MedicalLeadService {
 
     public List<MedicalLead> getMedicalLeads(String cityId, Double radius, MedicalLeadType leadType) {
         Optional<City> cityOptional = cityRepository.findById(cityId);
-        if(cityOptional.isEmpty()) {
+        if(!cityOptional.isPresent()) {
             throw new RuntimeException("invalid city id");
         }
 

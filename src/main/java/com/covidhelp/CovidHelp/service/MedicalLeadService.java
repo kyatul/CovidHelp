@@ -7,6 +7,10 @@ import com.covidhelp.CovidHelp.data.MedicalLead;
 import com.covidhelp.CovidHelp.repository.CityRepository;
 import com.covidhelp.CovidHelp.repository.MedicalLeadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.geo.Circle;
+import org.springframework.data.geo.Distance;
+import org.springframework.data.geo.Metrics;
+import org.springframework.data.geo.Point;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -31,12 +35,19 @@ public class MedicalLeadService {
         }
     }
 
-    public List<MedicalLead> getMedicalLeads(String cityId, Integer radius, MedicalLeadType leadType) {
+    public List<MedicalLead> getMedicalLeads(String cityId, Double radius, MedicalLeadType leadType) {
         Optional<City> cityOptional = cityRepository.findById(cityId);
         if(cityOptional.isEmpty()) {
             throw new RuntimeException("invalid city id");
         }
 
+        /*
+        List<City> cities = cityRepository.findByLocationWithin(
+                new Circle(
+                        new Point(cityOptional.get().getLocation()[0], cityOptional.get().getLocation()[1]),
+                        new Distance(radius, Metrics.KILOMETERS)));
+
+         */
         List<String> cityIds = Arrays.asList(cityId); // TODO find cityIds by radius
         return medicalLeadRepository.findAllByMedicalLeadTypeAndCityIdIn(leadType, cityIds);
     }

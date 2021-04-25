@@ -39,7 +39,7 @@ public class MedicalLeadController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<MedicalLeadResponse> getMedicalLeads(@RequestParam(name = "cityId", required = true) String cityId,
-                                                     @RequestParam(name = "radius", required = false) Integer radius,
+                                                     @RequestParam(name = "radius", required = false) Double radius,
                                                      @RequestParam(name = "leadType", required = true) MedicalLeadType leadType) {
         final List<MedicalLead> medicalLeads = medicalLeadService.getMedicalLeads(cityId, radius, leadType);
         return medicalLeads.stream()

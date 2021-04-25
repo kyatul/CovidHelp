@@ -21,7 +21,7 @@ public class MedicalLeadVerificationService {
 
     public void verifyLead(String userId, String medicalLeadId, MedicalLeadVerificationType verificationType) {
         Optional<MedicalLead> optionalMedicalLead = medicalLeadRepository.findById(medicalLeadId);
-        if(optionalMedicalLead.isEmpty()) {
+        if(!optionalMedicalLead.isPresent()) {
             throw new RuntimeException("no medical lead found with given id");
         }
         MedicalLead medicalLead = optionalMedicalLead.get();
